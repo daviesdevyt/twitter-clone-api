@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views, template_views
+from . import views
 
 urlpatterns = [
     # Auth
@@ -19,10 +19,6 @@ urlpatterns = [
     path("createpost/", views.create_post),
     path("userposts/<str:username>", views.all_user_posts),
     path("deletepost/", views.delete_post),
-
-    # Template views
-    path("index/auth", template_views.auth),
-    path("index/<str:username>", template_views.profile),
 
     # Admin stuff (unnecessary)
     path("", views.get_all_users),

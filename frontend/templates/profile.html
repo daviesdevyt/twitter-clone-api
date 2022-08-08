@@ -10,12 +10,12 @@
       data.posts.reverse();
       data.posts.forEach((post) => {
         if (post.image)
-          var img = `<img height=400 width=350 src='/static${post.image}'>`;
-        else var img = "No Image";
+          var img = `<img height=400 width=350 src='/static${post.image}'><br>`;
+        else var img = "";
         let datetime = new Date(post.timestamp);
         let postElement = `<li>${post.text}&nbsp;
           <a href="/deletepost?post_id=${post.id}">Delete</a>
-          <br>${img}<br>${datetime}</li><br><br><br>`;
+          <br>${img}${datetime}</li><br><br><br>`;
         $("#posts").append(postElement);
       });
     });
@@ -33,9 +33,9 @@
   <span id="bio"></span>
 </div>
 <img height="120" width="120" id="profilepic" />
+<p>Followers: <span id="followers">0</span>&nbsp;&nbsp; Following: <span id="following">0</span></p>
 {% if user.is_authenticated and user.username == username %}
-<br /><a href="/deleteprofilepic">Delete profile pic</a>
-<br />
+<a href="/deleteprofilepic"><button>Delete profile pic</button></a>
 <br />
 <br />
 <h2>Update profile?</h2>
@@ -55,12 +55,6 @@
   <input type="file" name="image" />
   <button type="submit">Update</button>
 </form>
-{% else %}
-<div>
-  <button>Follow</button>
-</div>
-{% endif %}
-
 <br /><br /><br />
 <h2>Create Post</h2>
 <form action="/createpost/" method="post" enctype="multipart/form-data">
@@ -69,11 +63,17 @@
   <input type="file" name="image" />
   <button type="submit">Post</button>
 </form>
+{% else %}
+<div>
+  <a href=""><button>Follow</button></a>
+</div>
+{% endif %}
+
 <br />
 <br />
 <br />
 <br />
 <h2>{{username}}'s posts</h2>
-<ul id="posts"></ul>
+<ul id="posts" style="list-style: none"></ul>
 
 {% endblock %}
