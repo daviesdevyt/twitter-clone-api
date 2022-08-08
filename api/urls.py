@@ -12,17 +12,17 @@ urlpatterns = [
     path("setprofilepic/", views.set_profile_pic),
     path("deleteprofilepic/", views.delete_profile_pic),
     path("getprofilepic/<str:username>", views.get_profile_pic),
+    path("updateprofile/", views.update_profile),
+    path("deleteuser/", views.delete_user),
 
     # Posts
     path("createpost/", views.create_post),
     path("userposts/<str:username>", views.all_user_posts),
     path("deletepost/", views.delete_post),
-    path("deleteuser/", views.delete_user),
-    path("deletecomment/", views.delete_comment),
-    path("addcomment/", views.add_comment),
 
     # Template views
-    path("index/", template_views.page),
+    path("index/auth", template_views.auth),
+    path("index/<str:username>", template_views.profile),
 
     # Admin stuff (unnecessary)
     path("", views.get_all_users),
