@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'twttr.urls'
+
+AUTH_USER_MODEL = "api.User"
 
 TEMPLATES = [
     {
@@ -118,7 +121,8 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-MEDIA_URL = "uploads/"
+MEDIA_URL = ""
+LOGIN_URL = '/login'
 
 STATICFILES_DIRS = [
     BASE_DIR / ''
